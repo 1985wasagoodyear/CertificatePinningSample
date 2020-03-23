@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1GH-zm-zCx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Alamo-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="AlamoTestViewController" customModule="CertificatePinningSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tcu-zF-pUV">
+                                <rect key="frame" x="40" y="221" width="334" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YMH-mM-1vh">
+                                <rect key="frame" x="40" y="261.5" width="334" height="334"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YMH-mM-1vh" secondAttribute="height" multiplier="1:1" id="mt4-xU-zhh"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9G5-cB-lXD">
+                                <rect key="frame" x="20" y="733" width="374" height="60"/>
+                                <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="zDe-n4-Zk9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="download">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="downloadButtonAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a4Y-8i-dej"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Tcu-zF-pUV" firstAttribute="leading" secondItem="YMH-mM-1vh" secondAttribute="leading" id="9Zy-GT-hbV"/>
+                            <constraint firstItem="YMH-mM-1vh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Ee8-Jj-IDV"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="9G5-cB-lXD" secondAttribute="trailing" constant="20" id="F2P-AE-lGs"/>
+                            <constraint firstItem="9G5-cB-lXD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="KCV-DP-Eeh"/>
+                            <constraint firstItem="YMH-mM-1vh" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Lw0-6m-HTk"/>
+                            <constraint firstItem="YMH-mM-1vh" firstAttribute="top" secondItem="Tcu-zF-pUV" secondAttribute="bottom" constant="20" id="XTX-C3-0CH"/>
+                            <constraint firstItem="YMH-mM-1vh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="lq9-yL-JtD"/>
+                            <constraint firstItem="Tcu-zF-pUV" firstAttribute="trailing" secondItem="YMH-mM-1vh" secondAttribute="trailing" id="lw2-cs-Lz2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="9G5-cB-lXD" secondAttribute="bottom" constant="20" id="r3x-ez-U6I"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Alamo" id="JjR-B9-jNn"/>
+                    <connections>
+                        <outlet property="imageView" destination="YMH-mM-1vh" id="27D-H2-ELQ"/>
+                        <outlet property="nameLabel" destination="Tcu-zF-pUV" id="ljg-CB-8Yk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1337.68115942029" y="-149.33035714285714"/>
+        </scene>
+        <!--Native-->
+        <scene sceneID="bYM-Mv-2Sv">
+            <objects>
+                <viewController id="AEQ-my-39n" customClass="NativeTestViewController" customModule="CertificatePinningSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nxg-kc-SeV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="2Ig-Be-Tlh">
+                                <rect key="frame" x="20" y="44" width="374" height="32"/>
+                                <segments>
+                                    <segment title="Certificate"/>
+                                    <segment title="Public Key"/>
+                                </segments>
+                                <connections>
+                                    <action selector="pinningOptionSegControlAction:" destination="AEQ-my-39n" eventType="valueChanged" id="onM-6o-rHv"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EKY-Tl-TKK">
+                                <rect key="frame" x="40" y="261.5" width="334" height="334"/>
+                                <color key="backgroundColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="EKY-Tl-TKK" secondAttribute="height" multiplier="1:1" id="wxt-NY-4aD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <state key="normal" title="ACTION">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionButtonAction:" destination="AEQ-my-39n" eventType="touchUpInside" id="no1-n9-Pw7"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="2Ig-Be-Tlh" firstAttribute="leading" secondItem="sjG-xg-GG1" secondAttribute="leading" constant="20" id="9To-DK-Q9S"/>
+                            <constraint firstItem="EKY-Tl-TKK" firstAttribute="centerY" secondItem="sjG-xg-GG1" secondAttribute="centerY" id="AWj-wN-Egf"/>
+                            <constraint firstItem="EKY-Tl-TKK" firstAttribute="centerX" secondItem="sjG-xg-GG1" secondAttribute="centerX" id="Bgh-1I-C8f"/>
+                            <constraint firstItem="2Ig-Be-Tlh" firstAttribute="top" secondItem="sjG-xg-GG1" secondAttribute="top" id="OBO-e6-OWU"/>
+                            <constraint firstItem="sjG-xg-GG1" firstAttribute="trailing" secondItem="2Ig-Be-Tlh" secondAttribute="trailing" constant="20" id="Xu7-NU-DfJ"/>
+                            <constraint firstItem="EKY-Tl-TKK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="sjG-xg-GG1" secondAttribute="top" id="Z62-sP-m9h"/>
+                            <constraint firstItem="sjG-xg-GG1" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="EKY-Tl-TKK" secondAttribute="bottom" id="j0l-kW-GhG"/>
+                            <constraint firstItem="EKY-Tl-TKK" firstAttribute="leading" secondItem="sjG-xg-GG1" secondAttribute="leading" constant="40" id="xby-Z3-L7K"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sjG-xg-GG1"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Native" id="Tdc-0N-mOs"/>
+                    <connections>
+                        <outlet property="actionButton" destination="EKY-Tl-TKK" id="1KJ-Vz-fIA"/>
+                        <outlet property="pinningOptionSegControl" destination="2Ig-Be-Tlh" id="vac-DM-vjd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nV2-IH-Mkr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1338" y="546"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="3Yd-XI-XNH">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="1GH-zm-zCx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bwX-zK-mnI">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="b0k-lf-TMi"/>
+                        <segue destination="AEQ-my-39n" kind="relationship" relationship="viewControllers" id="9lM-id-9Tc"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vgr-xR-XFj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="128.57142857142856"/>
+        </scene>
+    </scenes>
+</document>
