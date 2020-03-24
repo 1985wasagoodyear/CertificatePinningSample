@@ -89,10 +89,14 @@ extension NetworkManager: URLSessionDelegate {
                     didReceive challenge: URLAuthenticationChallenge,
                     completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         
+        // declare response and credentials
         var disposition: URLSession.AuthChallengeDisposition = .cancelAuthenticationChallenge
         var credential: URLCredential? = nil
+        
+        // will always be giving some completion
         defer { completionHandler(disposition, credential) }
         
+        // ensure there is a certificate provided from the server
         guard let trust = challenge.protectionSpace.serverTrust, SecTrustGetCertificateCount(trust) > 0 else {
             return
         }
@@ -103,6 +107,7 @@ extension NetworkManager: URLSessionDelegate {
                 if let serverCertificate = SecTrustGetCertificateAtIndex(trust, 0) {
                     let serverCertificateData = SecCertificateCopyData(serverCertificate) as Data
                     if CertificateData.permitted.contains(serverCertificateData) {
+                        // if certificate-pinning succeeds, approve usage
                         disposition = .useCredential
                         credential = URLCredential(trust: trust)
                     }
@@ -112,6 +117,7 @@ extension NetworkManager: URLSessionDelegate {
                 if let serverCertificate = SecTrustGetCertificateAtIndex(trust, 0),
                     let serverCertificateKey = SecKey.publicKey(for: serverCertificate) {
                     if CertificateKeys.permitted.contains(serverCertificateKey) {
+                        // if public key-pinning succeeds, approve usage
                         disposition = .useCredential
                         credential = URLCredential(trust: trust)
                     }
