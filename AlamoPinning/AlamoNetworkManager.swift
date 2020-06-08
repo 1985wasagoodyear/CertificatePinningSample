@@ -49,6 +49,11 @@ public class AlamoNetworkManager {
                                                  acceptSelfSignedCertificates: false,
                                                  performDefaultValidation: true,
                                                  validateHost: true),
+            "raw.githubusercontent.com":
+                PinnedCertificatesTrustEvaluator(certificates: SecCertificate.gitHub,
+                                                 acceptSelfSignedCertificates: false,
+                                                 performDefaultValidation: true,
+                                                 validateHost: true),
             
             // Public Key-based SSL Pinning
             /*
@@ -95,6 +100,10 @@ public class AlamoNetworkManager {
             .request(url)
             .responseData
             { (response) in
+                if let error = response.error {
+                    print(error)
+                    completion(nil); return
+                }
                 completion(response.data)
             }
             .resume()

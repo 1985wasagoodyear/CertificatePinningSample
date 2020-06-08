@@ -40,7 +40,8 @@ extension AlamoTestViewController {
                 switch result {
                     case .success(let mon):
                         self.updateUI(with: mon)
-                    case .failure(_):
+                    case .failure(let error):
+                        print(error)
                         self.nameLabel.text = "error"
                         self.imageView.image = nil
                 }
