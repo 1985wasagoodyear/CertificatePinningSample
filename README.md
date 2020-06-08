@@ -11,9 +11,10 @@ A simple demonstration of SSL Pinning in iOS.
 3. Native Pinning - Approach
 4. Pinning with Alamofire - Approach
 5. Current Difficulties
-6. Future Questions
-7. Future Reading
-8. References
+6. Fixed Issues
+7. Future Questions
+8. Future Reading
+9. References
 
 
 ## 1. SSL Pinning - General Topics
@@ -98,12 +99,8 @@ The challenge can be used to retrieve the certificate(s) from the server, then c
 Alamofire's wrapper for URLSession, aptly-named `Session` can be created with a `ServerTrustManager`, which allows for multiple evaluators to be used.
 
 These include:
-*  `PinnedCertificatesTrustEvaluator` - certificate-pinning
+* `PinnedCertificatesTrustEvaluator` - certificate-pinning
 * `PublicKeysTrustEvaluator` -  public key-pinning
-
-Once setup, the usage is transparent. 
-
-Not sure how error-handling is non-trusted servers, with Alamofire's aggressive rules.
 
 
 ## 5. Current Difficulties
@@ -114,22 +111,30 @@ Any trusted certificates made seem to be long-lived, and don't actively call the
 
 Not sure how to "reset" it.
 
-#### 2. Can't pin image for Alamofire
 
-Don't know how to fix this. 
+## 6. Fixed Issues
 
-Had the same issue with the native approach, but solved by downloading a copy of the certificate that the server had provided.
+~~#### 1. Can't pin image for Alamofire~~
 
-(obviously not a production-scale solution)
+~~Had the same issue with the native approach, but solved by downloading a copy of the certificate that the server had provided.~~
 
-Hypothesis: missing/misusing some certificate, especially since loading in the native approach isn't being used by Alamofire.
+~~Hypothesis: missing/misusing some certificate, especially since loading in the native approach isn't being used by Alamofire.~~
+
+Received error when performing Certificate pinning for image download:
+
+```
+serverTrustEvaluationFailed(reason: Alamofire.AFError.ServerTrustFailureReason.noRequiredEvaluator(host: "raw.githubusercontent.com"))
+```
+
+Resolved by:
+Adding `raw.githubusercontent.com` as a host for GitHub certificates.
 
 
-## 6. Future Questions
+## 7. Future Questions
 
 to be completed.
 
-## 7. Future Reading
+## 8. Future Reading
 
 [Alamofire - Advanced Usage, Security](https://github.com/Alamofire/Alamofire/blob/master/Documentation/AdvancedUsage.md#security)
 
@@ -140,7 +145,7 @@ to be completed.
 [Apple Developer - Handling An Authentication Challenge](https://developer.apple.com/documentation/foundation/url_loading_system/handling_an_authentication_challenge)
 
 
-## 8. References
+## 9. References
 
 #### 1. Certificate Pinning
 
