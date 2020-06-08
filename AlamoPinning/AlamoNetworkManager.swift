@@ -30,17 +30,22 @@ public class AlamoNetworkManager {
         let serverTrustPolicies: [String: ServerTrustEvaluating] = [
             // Certificate-based SSL Pinning
             "pokeapi.co":
-                PinnedCertificatesTrustEvaluator(certificates: [SecCertificate.pokeApi],
+                PinnedCertificatesTrustEvaluator(certificates: SecCertificate.pokeApi,
                                                  acceptSelfSignedCertificates: false,
                                                  performDefaultValidation: true,
                                                  validateHost: true),
             "github.com":
-                PinnedCertificatesTrustEvaluator(certificates: [SecCertificate.gitHub, SecCertificate.wwwGitHub],
+                PinnedCertificatesTrustEvaluator(certificates: SecCertificate.gitHub,
                                                  acceptSelfSignedCertificates: false,
                                                  performDefaultValidation: true,
                                                  validateHost: true),
             "www.github.com":
-                PinnedCertificatesTrustEvaluator(certificates: [SecCertificate.wwwGitHub, SecCertificate.gitHub],
+                PinnedCertificatesTrustEvaluator(certificates: SecCertificate.gitHub,
+                                                 acceptSelfSignedCertificates: false,
+                                                 performDefaultValidation: true,
+                                                 validateHost: true),
+            "sni.cloudflaressl.com":
+                PinnedCertificatesTrustEvaluator(certificates: SecCertificate.pokeApi,
                                                  acceptSelfSignedCertificates: false,
                                                  performDefaultValidation: true,
                                                  validateHost: true),

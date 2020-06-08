@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1080F1486E012B1E194916BE /* Pods_NativePinning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4B82AA0F2DCAEFA21C7E5C06 /* Pods_NativePinning.framework */; };
+		3F03CA89248E935100674E5D /* www-github-com.crt in Resources */ = {isa = PBXBuildFile; fileRef = 3F03CA88248E935100674E5D /* www-github-com.crt */; };
 		3F5BF5F42428FFDC00838D67 /* CommonPinning.h in Headers */ = {isa = PBXBuildFile; fileRef = 3F5BF5F22428FFDC00838D67 /* CommonPinning.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3F5BF5F72428FFDC00838D67 /* CommonPinning.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BF5F02428FFDC00838D67 /* CommonPinning.framework */; };
 		3F5BF5F82428FFDC00838D67 /* CommonPinning.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3F5BF5F02428FFDC00838D67 /* CommonPinning.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -123,6 +124,7 @@
 /* Begin PBXFileReference section */
 		05476D033033A4211B730437 /* Pods-CertificatePinningSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CertificatePinningSample.release.xcconfig"; path = "Target Support Files/Pods-CertificatePinningSample/Pods-CertificatePinningSample.release.xcconfig"; sourceTree = "<group>"; };
 		13BC57E6A3546F71B1273050 /* Pods_CertificatePinningSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CertificatePinningSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F03CA88248E935100674E5D /* www-github-com.crt */ = {isa = PBXFileReference; lastKnownFileType = file; path = "www-github-com.crt"; sourceTree = "<group>"; };
 		3F5BF5F02428FFDC00838D67 /* CommonPinning.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CommonPinning.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F5BF5F22428FFDC00838D67 /* CommonPinning.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommonPinning.h; sourceTree = "<group>"; };
 		3F5BF5F32428FFDC00838D67 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 		3F5BF61A242902DB00838D67 /* GitHub */ = {
 			isa = PBXGroup;
 			children = (
+				3F03CA88248E935100674E5D /* www-github-com.crt */,
 				3F5BF61B242902DB00838D67 /* www-github-com.cer */,
 				3F5BF61C242902DB00838D67 /* github-com.pem */,
 				3F5BF61D242902DB00838D67 /* github-com.cer */,
@@ -516,6 +519,7 @@
 				3F5BF622242902DB00838D67 /* github-com.pem in Resources */,
 				3F5BF61F242902DB00838D67 /* sni-cloudflaressl-com.pem in Resources */,
 				3F5BF621242902DB00838D67 /* www-github-com.cer in Resources */,
+				3F03CA89248E935100674E5D /* www-github-com.crt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

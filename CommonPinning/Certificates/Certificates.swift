@@ -10,56 +10,53 @@
 
 import Foundation
 
-/// unused?
-public enum CertificateType {
-    case pokeApi
-    case gitHub
-    case wwwGitHub
-}
-
 public enum CertificateData {
-    public static let pokeApi: Data = {
-        return try! Data(resourceFromBundle: "sni-cloudflaressl-com", ofType: "cer")!
-    }()
-    public static let gitHub: Data = {
-        return try! Data(resourceFromBundle: "github-com", ofType: "cer")!
-    }()
-    public static let wwwGitHub: Data = {
-        return try! Data(resourceFromBundle: "www-github-com", ofType: "cer")!
-    }()
+    private static func loadCert(name: String, type: String) -> Data {
+        return try! Data(resourceFromBundle: name, ofType: type)!
+    }
+    public static let pokeApi: [Data] = {[
+        loadCert(name: "sni-cloudflaressl-com", type: "cer"),
+        loadCert(name: "sni-cloudflaressl-com", type: "pem"),
+        loadCert(name: "sni-cloudflaressl-com2", type: "crt"), // this is used
+    ]}()
+    public static let gitHub: [Data] = {[
+        loadCert(name: "github-com", type: "cer"),
+        loadCert(name: "github-com", type: "pem"),
+        loadCert(name: "www-github-com", type: "cer"),
+        loadCert(name: "www-github-com", type: "crt") // this is used
+    ]}()
 }
 
 public extension CertificateData {
     static let permitted: [Data] = {
-        [CertificateData.pokeApi,
-         CertificateData.gitHub,
-         CertificateData.wwwGitHub]
+        CertificateData.pokeApi + CertificateData.gitHub
     }()
 }
 
 public enum CertificateKeys {
     public static let permitted: [SecKey] = {
-        [
-            SecKey.publicKey(for: .pokeApi)!,
-            SecKey.publicKey(for: .gitHub)!,
-            SecKey.publicKey(for: .wwwGitHub)!
-        ]
+        (SecCertificate.pokeApi + SecCertificate.gitHub)
+            .compactMap {
+                SecKey.publicKey(for: $0)
+            }
     }()
 }
 
 // for use to generate public keys
 public extension SecCertificate {
-    static let pokeApi: SecCertificate = {
-        let data = CertificateData.pokeApi
-        return SecCertificateCreateWithData(nil, data as CFData)!
+    static let pokeApi: [SecCertificate] = {
+        CertificateData
+            .pokeApi
+            .compactMap {
+                SecCertificateCreateWithData(nil, $0 as CFData)
+            }
     }()
-    static let gitHub: SecCertificate = {
-        let data = CertificateData.gitHub
-        return SecCertificateCreateWithData(nil, data as CFData)!
-    }()
-    static let wwwGitHub: SecCertificate = {
-        let data = CertificateData.wwwGitHub
-        return SecCertificateCreateWithData(nil, data as CFData)!
+    static let gitHub: [SecCertificate] = {
+        CertificateData
+            .gitHub
+            .compactMap {
+                SecCertificateCreateWithData(nil, $0 as CFData)
+            }
     }()
 }
 
@@ -67,15 +64,12 @@ public extension SecCertificate {
 public extension SecKey {
     static func publicKey(for certificate: SecCertificate) -> SecKey? {
         var publicKey: SecKey?
-        
         let policy = SecPolicyCreateBasicX509()
         var trust: SecTrust?
         let trustCreationStatus = SecTrustCreateWithCertificates(certificate, policy, &trust)
-        
         if let trust = trust, trustCreationStatus == errSecSuccess {
             publicKey = SecTrustCopyPublicKey(trust)
         }
-        
         return publicKey
     }
 }
