@@ -4,6 +4,7 @@ Updated March 23, 2020
 
 A simple demonstration of SSL Pinning in iOS.
 
+
 ## Table of Contents
 
 1. SSL Pinning - General Topics
@@ -21,7 +22,16 @@ A simple demonstration of SSL Pinning in iOS.
 
 The purpose of SSL Pinning is to avoid a [man-in-the-middle](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) attack, by validating the end-server you are communicating with, then allowing secure, encrypted communications with that server.
 
-The details for HTTPS, SSL, handshaking, etc will not be discussed in this document.
+The following details will _not_ be discussed in this document:
+
+1. HTTPS
+2. SSL
+3. changing/receiving Certificates
+4. safe-storage of bundle/downloaded Certificates
+5. handshaking
+6. Simulating a man-in-the-middle attack
+7. Mobile Security 
+
 
 Two options exist for SSL Pinning.
 
@@ -128,6 +138,8 @@ serverTrustEvaluationFailed(reason: Alamofire.AFError.ServerTrustFailureReason.n
 
 Resolved by:
 Adding `raw.githubusercontent.com` as a host for GitHub certificates.
+
+(Is Alamofire is doing a lot more work wrt the host-name, compared to my native implementation?)
 
 
 ## 7. Future Questions
